@@ -201,7 +201,7 @@ const Body = () => {
         </div>
       ) : error ? (
         <p>{error}</p>
-      ) : data.length === 0 ? (
+      ) : data?.length === 0 ? (
         <h2>Sorry, we couldn't find any restaurant for "{restaurantName}"</h2>
       ) : (
         <div className="restaurant-container">
