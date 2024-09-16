@@ -147,7 +147,7 @@ const Body = () => {
             </Select>
           </FormControl>
 
-          <TextField
+          <TextField className="custom-Height"
             type="text"
             label="Longitude"
             value={longitude}
@@ -155,7 +155,7 @@ const Body = () => {
             variant="outlined"
             sx={{ flex: 1 }}
           />
-          <TextField
+          <TextField className="custom-Height"
             type="text"
             label="Latitude"
             value={latitude}
@@ -163,7 +163,7 @@ const Body = () => {
             variant="outlined"
             sx={{ flex: 1 }}
           />
-          <TextField
+          <TextField className="custom-Height"
             type="text"
             label="Radius (km)"
             value={radius}

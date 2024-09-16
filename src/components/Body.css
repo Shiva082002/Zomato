@@ -185,3 +185,11 @@
   flex: 1 1 150px; /* Adjusted for better alignment */
   min-width: 150px; /* Maintains minimum width */
 }
+
+.custom-Height input{
+  padding: 9px;
+  }
+  .custom-Height label{
+  line-height: 13px;
+  overflow: visible;
+  }
