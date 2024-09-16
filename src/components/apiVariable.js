@@ -1,3 +1,3 @@
 
 
-export const apiVariable = "http://shivansh-zomato-backend.vercel.app";
+export const apiVariable = "https://shivansh-zomato-backend.vercel.app";
