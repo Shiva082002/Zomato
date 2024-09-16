@@ -6,13 +6,6 @@ import { FaCartArrowDown } from "react-icons/fa";
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // If no dependency array([]) is provided => useEffect will run after every render cycle
-  // If dependency array([]) is empty => useEffect will run only once after the initial render
-  // If dependency array is provided => useEffect will run after every render cycle if any of the dependencies change
-  // useEffect(() => {
-  //   console.log("Login Logout State Changed");
-  // }, [isLoggedIn]);
-
   return (
     <div className="header">
       <div className="logo-container">

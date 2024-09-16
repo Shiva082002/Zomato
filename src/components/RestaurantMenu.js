@@ -5,19 +5,19 @@ import useDataById from "./DataById";
 import "./RestaurantMenu.css";
 
 const RestaurantMenu = () => {
-  const { resId } = useParams(); // Get resId from URL parameters
-  const { data: restaurantInfo, loading, error } = useDataById(resId); // Fetch data using the hook
+  const { resId } = useParams(); 
+  const { data: restaurantInfo, loading, error } = useDataById(resId); 
 
   if (loading) {
-    return <RestaurantMenuShimmer />; // Display shimmer if data is loading
+    return <RestaurantMenuShimmer />; 
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // Display error if data fetching fails
+    return <div>Error: {error}</div>; 
   }
 
   if (!restaurantInfo) {
-    return <div>No restaurant data available</div>; // Handle empty data scenario
+    return <div>No restaurant data available</div>; 
   }
 
   const {
@@ -37,13 +37,13 @@ const RestaurantMenu = () => {
     <div className="menu">
       <div className="restaurant-header">
         <div className="restaurant-header-details">
-          {/* Restaurant Name, Locality, and Address */}
+
           <h1>{name}</h1>
           <h3>{locality}</h3>
           <p>{address}</p>
           <p>{cuisines}</p>
 
-          {/* Rating and Average Cost */}
+
           <h4 className="rating-time">
             <div className="rating">
               <MdStarRate
@@ -60,14 +60,14 @@ const RestaurantMenu = () => {
             <span className="time">Average cost for two: ₹{average_cost_for_two}</span>
           </h4>
 
-          {/* Booking and Delivery Info */}
+
           <p>
             {has_table_booking ? "Table booking available" : "No table booking"}
             &nbsp;|&nbsp;
             {has_online_delivery ? "Online delivery available" : "No online delivery"}
           </p>
 
-          {/* Featured Image */}
+
           {featured_image && (
             <div className="restaurant-image">
               <img src={featured_image} alt={`${name} featured`} />
@@ -76,7 +76,7 @@ const RestaurantMenu = () => {
         </div>
       </div>
 
-      {/* Zomato Events Section */}
+
       {zomato_events && zomato_events.length > 0 ? (
   <div className="events-section">
     <h2>Upcoming Events</h2>
@@ -91,7 +91,7 @@ const RestaurantMenu = () => {
           </p>
         </div>
 
-        {/* Event image on the right */}
+
         {event['event'].photos && event['event'].photos.length > 0 && (
           <div className="event-image">
             <img
