@@ -67,7 +67,7 @@ const Body = () => {
   useEffect(() => {
     if (prediction) {
       const mappedPrediction = Object.keys(menu_item_map).find(key => 
-        menu_item_map[key].includes(prediction)
+        menu_item_map[key]?.includes(prediction)
       );
     
       if (mappedPrediction) {
@@ -140,8 +140,8 @@ const Body = () => {
               label="Cuisines"
             >
               {cuisinesOptions.map(option => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
+                <MenuItem key={option?.value} value={option?.value}>
+                  {option?.label}
                 </MenuItem>
               ))}
             </Select>
@@ -205,7 +205,7 @@ const Body = () => {
         <h2>Sorry, we couldn't find any restaurant for "{restaurantName}"</h2>
       ) : (
         <div className="restaurant-container">
-          {data.map((restaurant) => (
+          {data?.map((restaurant) => (
             <RestaurantCard
               key={restaurant['R']['res_id']}
               id={restaurant['R']['res_id']}
