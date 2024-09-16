@@ -3,13 +3,12 @@ import RestaurantCard from "./RestaurantCard";
 import { RestaurantShimmer } from "./Shimmer";
 import "./Body.css";
 import usePaginatedData from "./DataList";
-import Pagination from '@mui/material/Pagination';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, TablePagination } from '@mui/material';
 import useDebounce from "./Debounce";
 import { countryOptions, avgSpendOptions, cuisinesOptions } from "./Variables";
 import useImageUploader from "./ImageSearch"; // Import the custom hook
@@ -25,7 +24,7 @@ const Body = () => {
   const [cuisinesFilter, setCuisinesFilter] = useState("");
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
-  const [radius, setRadius] = useState(3);
+  const [radius, setRadius] = useState(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileSubmit, setFileSubmit] = useState(false);
   const { prediction, uploadImage } = useImageUploader();
@@ -147,25 +146,28 @@ const Body = () => {
             </Select>
           </FormControl>
 
-          <TextField className="custom-Height"
+          <TextField
             type="text"
             label="Longitude"
+            className="custom-Height"
             value={longitude}
             onChange={(e) => setLongitude(e.target.value)}
             variant="outlined"
             sx={{ flex: 1 }}
           />
-          <TextField className="custom-Height"
+          <TextField
             type="text"
             label="Latitude"
+            className="custom-Height"
             value={latitude}
             onChange={(e) => setLatitude(e.target.value)}
             variant="outlined"
             sx={{ flex: 1 }}
           />
-          <TextField className="custom-Height"
+          <TextField
             type="text"
             label="Radius (km)"
+            className="custom-Height"
             value={radius}
             onChange={(e) => setRadius(e.target.value)}
             variant="outlined"
@@ -174,7 +176,9 @@ const Body = () => {
 
           {/* Image Upload Section */}
           <Box sx={{ flexBasis: '100%', mt: 2 }}>
-            <Typography variant="h6">Upload Image to Search on the basis of Cuisines</Typography>
+            <div className="d-flex">
+              <div className="margin-left">
+              <Typography variant="h6">Upload Image to Search on the basis of Cuisines</Typography>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <input
                 type="file"
@@ -182,15 +186,20 @@ const Body = () => {
                 onChange={handleFileChange}
                 style={{ display: 'block' }}
               />
-              <Button
-                type="submit"
+            </form>
+              </div>
+            
+            <Button className="custom-margin"
+                type="button"
                 variant="contained"
                 color="primary"
+                onClick={handleSubmit}
                 sx={{ mt: 2 }}
               >
-                Upload Image
+                Search Image
               </Button>
-            </form>
+            </div>
+            
           </Box>
         </Box>
       </Box>
@@ -223,16 +232,24 @@ const Body = () => {
 
       <div className="pagination-container">
         <div className="pagination-buttons">
-          <Pagination
+        <TablePagination
+          component="div"
+          count={total_pages}
+          page={page-1}
+          onPageChange={(e, value) => setPage(value+1)}
+          rowsPerPage={pageSize}
+          onRowsPerPageChange={handlePageSizeChange}
+        />
+          {/* <Pagination
             count={total_pages}
             page={page}
             onChange={(e, value) => setPage(value)}
             showFirstButton
             showLastButton
             boundaryCount={2}
-          />
+          /> */}
         </div>
-        <div className="page-size-selector">
+        {/* <div className="page-size-selector">
           <FormControl variant="outlined" size="small">
             <InputLabel htmlFor="page-size">Items per page</InputLabel>
             <Select
@@ -247,7 +264,7 @@ const Body = () => {
               <MenuItem value={50}>50</MenuItem>
             </Select>
           </FormControl>
-        </div>
+        </div> */}
       </div>
     </div>
   );

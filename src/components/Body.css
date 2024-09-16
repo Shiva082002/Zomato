@@ -193,3 +193,23 @@
   line-height: 13px;
   overflow: visible;
   }
+
+
+  .custom-Height input{
+    padding: 9px;
+    }
+    .custom-Height label{
+    line-height: 13px;
+    overflow: visible;
+    }
+    .d-flex{
+    display: flex;
+    align-items: flex-start;
+    }
+    .margin-left{
+margin-right: 20px;
+    }
+
+.custom-margin{
+  margin-top: 5px;
+}
