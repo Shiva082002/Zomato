@@ -4,6 +4,7 @@ import { RestaurantMenuShimmer } from "./Shimmer";
 import useDataById from "./DataById";
 import "./RestaurantMenu.css";
 
+
 const RestaurantMenu = () => {
   const { resId } = useParams(); 
   const { data: restaurantInfo, loading, error } = useDataById(resId); 
@@ -23,8 +24,6 @@ const RestaurantMenu = () => {
   const {
     name,
     cuisines,
-    locality_verbose: locality,
-    address,
     average_cost_for_two,
     has_table_booking,
     has_online_delivery,
@@ -33,14 +32,13 @@ const RestaurantMenu = () => {
     zomato_events,
   } = restaurantInfo;
 
+
   return (
     <div className="menu">
       <div className="restaurant-header">
         <div className="restaurant-header-details">
-
           <h1>{name}</h1>
-          <h3>{locality}</h3>
-          <p>{address}</p>
+          <p>{restaurantInfo?.location?.address}</p>
           <p>{cuisines}</p>
 
 

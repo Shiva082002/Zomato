@@ -27,8 +27,8 @@ const useImageUploader = () => {
         setPrediction(result[0].label.replace(/_/g, " "));
       } else {
         // Show an alert if the label is not found
-        alert("Label not found. Please try again.");
-        setPrediction("Label not found.");
+        alert("Cuisine not found. Please try again.");
+        setPrediction("Cuisine not found.");
       }
     
   

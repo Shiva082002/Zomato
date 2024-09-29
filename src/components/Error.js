@@ -7,7 +7,7 @@ const Error = () => {
   return (
     <div className="error-page">
       <div className="error-image">
-        <img src={errorImage} alt="Error Image" />
+        <img src={errorImage} alt="Error-I" />
       </div>
 
       <div className="error-details">

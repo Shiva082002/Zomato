@@ -13,7 +13,7 @@ import useDebounce from "./Debounce";
 import { countryOptions, avgSpendOptions, cuisinesOptions } from "./Variables";
 import useImageUploader from "./ImageSearch"; // Import the custom hook
 import {menu_item_map} from './Variables';
-
+import './LocationComponent.css';
 
 const Body = () => {
   const { data, page, total_pages, pageSize, loading, error, setPage, setPageSize, setFilter } = usePaginatedData();
@@ -24,7 +24,7 @@ const Body = () => {
   const [cuisinesFilter, setCuisinesFilter] = useState("");
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
-  const [radius, setRadius] = useState(0);
+  const [radius, setRadius] = useState(5);
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileSubmit, setFileSubmit] = useState(false);
   const { prediction, uploadImage } = useImageUploader();
@@ -45,6 +45,22 @@ const Body = () => {
     });
   }, [debouncedSearch, countryFilter, avgSpendFilter, cuisinesFilter, longitude, latitude, radius, setFilter]);
 
+  const getCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          alert("Unable to retrieve your location. Please try again.");
+        }
+      );
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  };
 
   const handlePageSizeChange = (e) => {
     setPageSize(parseInt(e.target.value, 10));
@@ -174,6 +190,12 @@ const Body = () => {
             sx={{ flex: 1 }}
           />
 
+          <div className="location-container">
+                <button className="location-button" onClick={getCurrentLocation}>
+                  Detect Current Location
+                </button>
+              </div>
+
           {/* Image Upload Section */}
           <Box sx={{ flexBasis: '100%', mt: 2 }}>
             <div className="d-flex">
@@ -219,7 +241,7 @@ const Body = () => {
               key={restaurant['R']['res_id']}
               id={restaurant['R']['res_id']}
               name={restaurant['name']}
-              areaName={restaurant['location.city']}
+              city={restaurant['location']['city']}
               votes={restaurant['user_rating']['votes']}
               cuisines={restaurant['cuisines']}
               costForTwo={restaurant['average_cost_for_two']}

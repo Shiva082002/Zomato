@@ -4,7 +4,7 @@ import { MdStarRate } from "react-icons/md";
 const RestaurantCard = ({
   id,
   name,
-  areaName,
+  city,
   votes,
   cuisines,
   costForTwo,
@@ -40,7 +40,7 @@ const RestaurantCard = ({
             ? cuisines.slice(0, 28) + "..."
             : cuisines}
         </p>
-        <p className="location">{areaName}</p>
+        <p className="location">{city}</p>
       </div>
     </Link>
   );
