@@ -93,14 +93,10 @@ export const menu_item_map = {
         "apple pie",
         "baby back ribs",
         "beef carpaccio",
-        "chocolate cake",
-        "chocolate mousse",
         "chicken wings",
         "clam chowder",
-        "club sandwich",
         "crab cakes",
         "foie gras",
-        "hamburger",
         "pulled pork sandwich",
         
         "waffles"
@@ -135,7 +131,7 @@ export const menu_item_map = {
         "none"
     ],
     "burger": [
-        "none"
+        "hamburger"
     ],
     "cafe": [
         "none"
@@ -176,7 +172,9 @@ export const menu_item_map = {
         "panna cotta",
         "red velvet cake",
         "strawberry shortcake",
-        "ice cream"
+        "ice cream",
+        "chocolate cake",
+        "chocolate mousse"
     ],
     "filipino": [
         "none"
@@ -298,7 +296,8 @@ export const menu_item_map = {
     ],
     "western": [
         "beef tartare",
-        "filet mignon"
+        "filet mignon",
+        "club sandwich"
     ],
     "world cuisine": [
         "none"

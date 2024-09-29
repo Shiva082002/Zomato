@@ -21,7 +21,17 @@ const useImageUploader = () => {
         }
       );
       const result = await response.json();    
-    setPrediction(result[0].label.replace(/_/g, " "));
+    // setPrediction(result[0].label.replace(/_/g, " "));
+    
+      if (result[0] && result[0].label) {
+        setPrediction(result[0].label.replace(/_/g, " "));
+      } else {
+        // Show an alert if the label is not found
+        alert("Label not found. Please try again.");
+        setPrediction("Label not found.");
+      }
+    
+  
   };
 
   return { prediction, uploadImage };
